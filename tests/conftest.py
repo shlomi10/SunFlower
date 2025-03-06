@@ -4,28 +4,27 @@ import allure
 import pytest
 from playwright.sync_api import sync_playwright
 
+from pages.first_article_page import FirstArticlePage
 from pages.homePage import Homepage
+from pages.pixel_page import PixelPage
 from pages.resultsPage import ResultsPage
-from pages.wikiPage import WikiPage
 
-class Constants:
-    USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 
 @pytest.fixture(scope="function", autouse=True)
 def initialize(request):
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)
-        context = browser.new_context(user_agent=Constants.USER_AGENT)
+        context = browser.new_context()
         page = context.new_page()
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         home_page = Homepage(page)
+        first_article_page = FirstArticlePage(page)
         result_page = ResultsPage(page)
-        wiki_page = WikiPage(page)
-        yield home_page, result_page, wiki_page, page
+        pixel_page = PixelPage(page)
+        yield home_page, first_article_page, result_page, pixel_page, page
 
         screenshot_dir = "../screenshots"
-        os.makedirs(screenshot_dir, exist_ok=True)  # ✅ Ensure directory exists
-        screenshot_path = f"{screenshot_dir}/{request.node.name}.png"
+        os.makedirs(screenshot_dir, exist_ok=True)  # Ensure directory exists
 
         # Capture screenshot if test fails
         if request.node.rep_call.failed:  # Checks if test failed
