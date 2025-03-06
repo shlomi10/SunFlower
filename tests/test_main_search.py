@@ -28,6 +28,7 @@ class TestMainSearch:
         with allure.step("start search function test"):
             self.page.goto(BASE_URL)
             self.home_page.search_for_something(SEARCH_TERM)
+            self.home_page.click_on_recaptcha()
             expect(self.result_page.validate_search_result_in_page()).to_have_text(
                 SEARCH_RESULT), "Israel was not under results"
 
@@ -40,6 +41,7 @@ class TestMainSearch:
         with allure.step("start test validate title"):
             self.page.goto(BASE_URL)
             self.home_page.search_for_something(SEARCH_TERM)
+            self.home_page.click_on_recaptcha()
         with allure.step("click first result on page"):
             self.result_page.click_first_search_result_in_page()
         with allure.step("validate title of the page"):

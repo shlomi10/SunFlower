@@ -8,12 +8,14 @@ from pages.homePage import Homepage
 from pages.resultsPage import ResultsPage
 from pages.wikiPage import WikiPage
 
+class Constants:
+    USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 
 @pytest.fixture(scope="function", autouse=True)
 def initialize(request):
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)
-        context = browser.new_context()
+        context = browser.new_context(user_agent=Constants.USER_AGENT)
         page = context.new_page()
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         home_page = Homepage(page)
