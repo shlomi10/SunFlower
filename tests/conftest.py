@@ -2,6 +2,7 @@ import os
 
 import allure
 import pytest
+
 from playwright.sync_api import sync_playwright
 
 from pages.first_article_page import FirstArticlePage
@@ -13,9 +14,17 @@ from pages.resultsPage import ResultsPage
 @pytest.fixture(scope="function", autouse=True)
 def initialize(request):
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
-        context = browser.new_context()
+        browser = playwright.chromium.launch(headless=False, args=["--start-maximized"])
+        context = browser.new_context(no_viewport=True)
         page = context.new_page()
+
+        # Ensure the window is maximized using JavaScript
+        page.evaluate("window.moveTo(0, 0); window.resizeTo(screen.availWidth, screen.availHeight);")
+
+        # Get the actual window size from the browser and adjust viewport
+        window_size = page.evaluate("""() => {return { width: window.innerWidth, height: window.innerHeight };}""")
+        page.set_viewport_size(window_size)
+
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         home_page = Homepage(page)
         first_article_page = FirstArticlePage(page)

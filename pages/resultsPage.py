@@ -1,5 +1,4 @@
 import allure
-from playwright.sync_api import Locator
 
 from pages.basePage import BasePage
 
@@ -15,5 +14,5 @@ class ResultsPage(BasePage):
         self.__google_pixel_result = page.locator("//img[contains(@title, 'Google Pixel 9 Pro XL')]")
 
     @allure.step("select the pixel device in page")
-    def select_the_pixel_device_in_page(self) -> Locator:
+    def select_the_pixel_device_in_page(self) -> None:
         self.click(self.__google_pixel_result)
