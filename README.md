@@ -4,26 +4,13 @@
 
 ## Project Setup
 
-* Install pytest-html-reporter by running the following command:
-
-```
-pip install pytest-html-reporter
-```
-
-* Install Playwright by running the following command:
-
-```
-playwright install
-```
+* Clone the project
+* Navigate to the project directory
 
 * Install requirements (dependencies) by running the following command:
-
 ```
 pip install -r requirements.txt 
 ```
-
-* Clone the project
-* Navigate to the project directory
 
 ## Running Tests with report
 
@@ -31,19 +18,19 @@ pip install -r requirements.txt
 python -m pytest tests/ --html-report=./reports
 ```
 
-## Running Tests with report and see the API requests and responses on the console
+## Running Tests with report and see the output under the console
 ```
 python -m pytest -s tests/ --html-report=./reports
 ```
 
-## Running Tests in parallel with report and see the API requests and responses on the console
+## Running Tests in parallel with report and see the output under the console
 ```
 python -m pytest -s -n auto tests/ --html-report=./reports
 ```
 
 When no browser was selected then chromium will be used.
 
-* Run tests:
+* Run tests in pytest:
 
 ```
 pytest
