@@ -1,5 +1,6 @@
 from playwright.sync_api import Page, Locator
 
+
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
@@ -53,4 +54,3 @@ class BasePage:
         self.page.locator(locator_str).wait_for(state="visible")
         frame = self.page.frame_locator(locator_str)
         return frame
-

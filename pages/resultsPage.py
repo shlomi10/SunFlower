@@ -6,6 +6,7 @@ from pages.basePage import BasePage
 This file contains the results page, where you can find results of search
 """
 
+
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Result page")
 class ResultsPage(BasePage):

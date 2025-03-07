@@ -6,6 +6,7 @@ from pages.basePage import BasePage
 This file contains the pixel 9 pro xl page
 """
 
+
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("pixel 9 pro xl page")
 class PixelPage(BasePage):
