@@ -32,11 +32,10 @@ def initialize(request):
         pixel_page = PixelPage(page)
         yield home_page, first_article_page, result_page, pixel_page, page
 
-        screenshot_dir = "../screenshots"
-        os.makedirs(screenshot_dir, exist_ok=True)  # Ensure directory exists
-
         # Capture screenshot if test fails
-        if request.node.rep_call.failed:  # Checks if test failed
+        if hasattr(request.node, "rep_call") and request.node.rep_call.failed:  # Checks if test failed
+            screenshot_dir = "../screenshots"
+            os.makedirs(screenshot_dir, exist_ok=True) # Ensure directory exists
             screenshot_path = f"../screenshots/{request.node.name}.png"
             page.screenshot(path=screenshot_path, full_page=True)
             with open(screenshot_path, "rb") as image_file:
