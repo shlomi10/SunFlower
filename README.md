@@ -46,6 +46,12 @@ pytest
 allure serve
 ```
 
+* View trace of playwright run the command:
+```
+npx playwright show-trace trace/trace.zip
+```
+
+
 ## View Help And Custom CLI Options
 
 ```
