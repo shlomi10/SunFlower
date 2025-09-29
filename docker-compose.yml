@@ -1,0 +1,39 @@
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sunFlower-tests
+    env_file: ./utils/.env
+    environment:
+      HEADLESS: "true"
+      BASE_URL: "https://demowebshop.tricentis.com"
+    working_dir: /app
+    shm_size: "1gb"
+    volumes:
+      - .:/app
+      - ./allure-results:/app/allure-results
+      - ./screenshots:/app/screenshots
+      - ./trace:/app/trace
+    command: [ "sh", "-c", "Xvfb :99 -screen 0 1920x1080x24 & export DISPLAY=:99 && pytest --alluredir=/app/allure-results" ]
+    depends_on:
+      - allure
+
+  allure:
+    image: frankescobar/allure-docker-service
+    container_name: allure-service
+    ports:
+      - "5051:5050"
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./allure-history:/app/allure-history
+
+  allure-ui:
+    image: frankescobar/allure-docker-service-ui
+    container_name: allure-ui
+    ports:
+      - "5050:5252"
+    environment:
+      ALLURE_DOCKER_PUBLIC_API_URL: http://localhost:5051/allure-docker-service
+    depends_on:
+      - allure

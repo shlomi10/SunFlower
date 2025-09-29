@@ -1,20 +1,18 @@
 import os
-
+os.environ["DISPLAY"] = ":99"
 import allure
 import pytest
 
 from playwright.sync_api import sync_playwright
 
-from pages.first_article_page import FirstArticlePage
-from pages.homePage import Homepage
-from pages.pixel_page import PixelPage
-from pages.resultsPage import ResultsPage
+from tests.base_class import BaseClass
 
 
 @pytest.fixture(scope="function", autouse=True)
 def initialize(request):
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False, args=["--start-maximized"])
+        headless_mode = os.getenv("HEADLESS", "true").lower() == "true"
+        browser = playwright.chromium.launch(headless=headless_mode, args=["--no-sandbox", "--disable-dev-shm-usage"])
         context = browser.new_context(no_viewport=True)
         page = context.new_page()
 
@@ -26,11 +24,9 @@ def initialize(request):
         page.set_viewport_size(window_size)
 
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
-        home_page = Homepage(page)
-        first_article_page = FirstArticlePage(page)
-        result_page = ResultsPage(page)
-        pixel_page = PixelPage(page)
-        yield home_page, first_article_page, result_page, pixel_page, page
+        base = BaseClass(page)
+        page.goto(base.base_url)
+        yield base
 
         # Capture screenshot if test fails
         if hasattr(request.node, "rep_call") and request.node.rep_call.failed:  # Checks if test failed

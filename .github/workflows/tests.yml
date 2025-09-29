@@ -1,0 +1,57 @@
+name: Run Tests & Publish Allure Report
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🐳 Pull Docker image
+        run: docker pull shlomi10/orangehrm:002
+
+      - name: 🗂️ Create Allure results folder
+        run: mkdir -p ./allure-results
+
+      - name: 🧪 Run tests inside Docker container
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/allure-results:/app/allure-results \
+            shlomi10/orangehrm:002 \
+            sh -c "Xvfb :99 -screen 0 1920x1080x24 & export DISPLAY=:99 && pytest --alluredir=/app/allure-results"
+
+      - name: 📥 Checkout gh-pages branch into ./history
+        uses: actions/checkout@v3
+        if: always()
+        with:
+          ref: gh-pages
+          path: history
+
+      - name: 📊 Generate Allure HTML report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          gh_pages: history
+          allure_results: allure-results
+          allure_history: allure-report
+
+      - name: 🚀 Deploy Allure report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
+          publish_branch: gh-pages

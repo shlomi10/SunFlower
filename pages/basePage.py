@@ -1,3 +1,5 @@
+import random
+
 from playwright.sync_api import Page, Locator
 
 
@@ -12,6 +14,13 @@ class BasePage:
     def click(self, element: Locator):
         """Click an element (expects a Locator)."""
         element.click()
+
+    def click_on_random_element(self, elements: Locator):
+        """Click a random element (turn Locator into a list first)."""
+        all_elements = elements.all()
+        if not all_elements:
+            raise ValueError("No elements found to click.")
+        random.choice(all_elements).click()
 
     def type(self, element: Locator, text: str):
         """Type an input field (expects a Locator)."""
@@ -44,6 +53,10 @@ class BasePage:
     def wait_for_element_to_be_visible(self, element: Locator, timeout: int = 5000):
         """Wait for an element to be visible (expects a Locator)."""
         element.wait_for(state="visible", timeout=timeout)
+
+    def wait_for_loader_to_disappear(self, element: Locator, timeout: int = 10000):
+        """Wait until the given element (Locator) disappears (becomes hidden)."""
+        element.wait_for(state="hidden", timeout=timeout)
 
     def take_screenshot(self, path: str = "screenshot.png"):
         """Take a screenshot of the page."""

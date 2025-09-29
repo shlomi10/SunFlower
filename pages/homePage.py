@@ -5,7 +5,7 @@ from pytest_playwright.pytest_playwright import page
 from pages.basePage import BasePage
 
 """
-This file contains the main search page, where you can make search
+This file contains the main page
 """
 
 
@@ -14,9 +14,21 @@ This file contains the main search page, where you can make search
 class Homepage(BasePage):
     def __init__(self, page):
         super().__init__(page)
-        self.__first_article = page.locator(".review-column-list-item.review-column-list-item-main")
+        self.__register = page.locator(".ico-register")
+        self.__emailHeader = page.locator(".header-links a.account")
+        self.__digital_downloads = page.locator(".top-menu a[href='/digital-downloads']")
 
-    @allure.step("click on first article")
-    def select_first_article(self) -> None:
-        expect(self.__first_article).to_be_visible(timeout=5000)
-        self.__first_article.click()
+    @allure.step("click on register")
+    def select_register(self) -> None:
+        expect(self.__register).to_be_visible(timeout=5000)
+        self.click(self.__register)
+
+    @allure.step("get registered email")
+    def get_registered_email(self) -> str:
+        expect(self.__emailHeader).to_be_visible(timeout=5000)
+        return self.get_text(self.__emailHeader)
+
+    @allure.step("get registered email")
+    def click_on_digital_downloads(self) -> None :
+        expect(self.__digital_downloads).to_be_visible(timeout=5000)
+        self.click(self.__digital_downloads)
