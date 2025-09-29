@@ -7,7 +7,7 @@
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-086DD7?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/shlomi10/sunflower)
 [![Faker](https://img.shields.io/badge/Faker-8E44AD?style=for-the-badge&logo=python&logoColor=white)](https://faker.readthedocs.io/)
-[![Live Report](https://img.shields.io/badge/📊_Live_Report-FF6B6B?style=for-the-badge&logoColor=white)](http://localhost:5051/allure-docker-service/projects/default/reports/latest/index.html)
+[![Live Report](https://img.shields.io/badge/📊_Live_Report-FF6B6B?style=for-the-badge&logoColor=white)](https://shlomi10.github.io/SunFlower/)
 [![License](https://img.shields.io/badge/License-MIT-00D26A?style=for-the-badge&logoColor=white)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-4CAF50?style=for-the-badge)](https://github.com/shlomi10/sunFlower)
 
