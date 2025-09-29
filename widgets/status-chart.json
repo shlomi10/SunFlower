@@ -1,1 +1,1 @@
-[{"uid":"8928afb9f3908642","name":"test_delete_user_via_ui","time":{"start":1759146485373,"stop":1759146487390,"duration":2017},"status":"passed","severity":"normal"},{"uid":"e82334ac9019046f","name":"test_create_user_via_api","time":{"start":1759146481097,"stop":1759146483840,"duration":2743},"status":"passed","severity":"normal"}]
+[{"uid":"b44a9a38f47575d6","name":"validate basic functionality","time":{"start":1759146701534,"stop":1759146708062,"duration":6528},"status":"passed","severity":"normal"}]

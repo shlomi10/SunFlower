@@ -1,3 +1,0 @@
-Using empNumber: 378
-RESPONSE CODE: 200
-RESPONSE TEXT: {"data":{"id":170,"userName":"testuser_1759146479","deleted":false,"status":true,"employee":{"empNumber":378,"employeeId":"0578","firstName":"Azgar khan","middleName":"","lastName":"Abdul","terminationId":null},"userRole":{"id":1,"name":"Admin","displayName":"Admin"}},"meta":[],"rels":[]}
