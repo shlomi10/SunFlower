@@ -1,15 +1,15 @@
 # 🧪 QA Automation Test Suite
 
-[![Python](https://img.shields.io/badge/Python-3.13.5+-3776AB?style=for-the-badge&logo=python&logoColor=FFD43B)](https://www.python.org/)
-[![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)](https://pytest.org/)
-[![Allure](https://img.shields.io/badge/Allure-FE5000?style=for-the-badge&logo=qameta&logoColor=white)](https://docs.qameta.io/allure/)
+[![Python](https://img.shields.io/badge/Python-3.13.5+-FFD43B?style=for-the-badge&logo=python&logoColor=3776AB)](https://www.python.org/)
+[![Playwright](https://img.shields.io/badge/Playwright-45BA4B?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
+[![Pytest](https://img.shields.io/badge/Pytest-009FE3?style=for-the-badge&logo=pytest&logoColor=white)](https://pytest.org/)
+[![Allure](https://img.shields.io/badge/Allure-FF5C00?style=for-the-badge&logo=qameta&logoColor=white)](https://docs.qameta.io/allure/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-086DD7?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/shlomi10/sunflower)
-[![Faker](https://img.shields.io/badge/Faker-8E44AD?style=for-the-badge&logo=python&logoColor=white)](https://faker.readthedocs.io/)
-[![Live Report](https://img.shields.io/badge/📊_Live_Report-FF6B6B?style=for-the-badge&logoColor=white)](https://shlomi10.github.io/SunFlower/)
-[![License](https://img.shields.io/badge/License-MIT-00D26A?style=for-the-badge&logoColor=white)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-4CAF50?style=for-the-badge)](https://github.com/shlomi10/sunFlower)
+[![Docker Hub](https://img.shields.io/badge/Docker_Hub-1D63ED?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/shlomi10/sunflower)
+[![Faker](https://img.shields.io/badge/Faker-9B59B6?style=for-the-badge&logo=python&logoColor=white)](https://faker.readthedocs.io/)
+[![Live Report](https://img.shields.io/badge/📊_Live_Report-E74C3C?style=for-the-badge&logoColor=white)](http://localhost:5051/allure-docker-service/projects/default/reports/latest/index.html)
+[![License](https://img.shields.io/badge/License_MIT-27AE60?style=for-the-badge&logoColor=white)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Active-2ECC71?style=for-the-badge)](https://github.com/shlomi10/sunFlower)
 
 > 🚀 **Production-Ready E2E Automation Framework with Page Object Model & Advanced Reporting**
 
@@ -547,7 +547,7 @@ docker run --rm \
 🔗 **[hub.docker.com/r/shlomi10/sunflower](https://hub.docker.com/r/shlomi10/sunflower)**
 
 ### **Image Features**
-- ✅ Python 3.11 with all dependencies pre-installed
+- ✅ Python 3.13.5 with all dependencies pre-installed
 - ✅ Playwright browsers (Chromium, Firefox, WebKit) included
 - ✅ Xvfb configured for headless execution
 - ✅ Optimized for CI/CD pipelines
