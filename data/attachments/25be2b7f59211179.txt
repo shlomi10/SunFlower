@@ -1,9 +1,0 @@
-2025-09-29 11:23:41,397 [INFO] tests.test_user_flow: Running API user creation test.
-2025-09-29 11:23:41,397 [INFO] api.users_api: Logging in with user: Admin
-2025-09-29 11:23:41,397 [INFO] api.users_api: Navigating to URL: https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
-2025-09-29 11:23:41,865 [INFO] api.users_api: Login submitted.
-2025-09-29 11:23:43,486 [INFO] api.users_api: Session cookie retrieved successfully.
-2025-09-29 11:23:43,486 [INFO] api.users_api: Admin session initialized from browser.
-2025-09-29 11:23:43,486 [INFO] api.users_api: Creating user: testuser_1759145019
-2025-09-29 11:23:43,710 [INFO] api.users_api: Get employees response: 200 - {"data":[{"empNumber":341,"lastName":"d","firstName":"d","middleName":"","employeeId":"0542","terminationId":null},{"empNumber":340,"lastName":"Doe","firstName":"John","middleName":"","employeeId":"0541","terminationId":null},{"empNumber":339,"lastName":"Doe","firstName":"Marko","middleName":"Abc","employeeId":"05383","terminationId":null},{"empNumber":337,"lastName":"Doe","firstName":"John","middleName":"","employeeId":"0538","terminationId":null},{"empNumber":342,"lastName":"jgbsdhvbcvjkl","firstName":"jhsadbcm","middleName":"Ahmed","employeeId":"05388","terminationId":null},{"empNumber":7,"lastName":"LastNameTest","firstName":"opp","middleName":"kara","employeeId":"159753","terminationId":null},{"empNumber":338,"lastName":"mahi","firstName":"rani","middleName":"banu","employeeId":"448","terminationId":null}],"meta":{"total":7},"rels":[]}
-2025-09-29 11:23:44,177 [INFO] api.users_api: Create user response: 200 - {"data":{"id":145,"userName":"testuser_1759145019","deleted":false,"status":true,"employee":{"empNumber":341,"employeeId":"0542","firstName":"d","middleName":"","lastName":"d","terminationId":null},"userRole":{"id":1,"name":"Admin","displayName":"Admin"}},"meta":[],"rels":[]}
