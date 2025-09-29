@@ -168,9 +168,9 @@ docker-compose run tests pytest tests/ --headed
 
 ### **Report Access**
 - **Local**: Run `allure serve allure-results`
-- **Docker**: Navigate to `http://localhost:5050`
+- **Docker**: Navigate to `http://localhost:5051`
 - **CI/CD**: Reports automatically generated and archived
-
+- **Cloud running reports**: Navigate to http://localhost:5051/allure-docker-service/projects/default/reports/latest/index.html
 ## 🔧 Configuration
 
 ### **Environment Variables** (`.env`)
@@ -363,7 +363,3 @@ SOFTWARE.
 ⭐ **Star this repository if you found it helpful for your QA automation journey!**
 
 ![Footer](https://img.shields.io/badge/Made%20with-🧪%20&%20❤️-red?style=for-the-badge)
-
-
-
-http://localhost:5051/allure-docker-service/projects/default/reports/latest/index.html
