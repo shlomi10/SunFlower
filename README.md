@@ -222,7 +222,7 @@ After running tests with Docker Compose:
 - **Allure UI Dashboard**: http://localhost:5050
 - **Allure API Service**: http://localhost:5051
 - **Full Report**: http://localhost:5051/allure-docker-service/projects/default/reports/latest/index.html
-
+- **Full live Report**: https://shlomi10.github.io/SunFlower/
 ---
 
 ## 🛠️ Tech Stack
@@ -422,11 +422,12 @@ allure open allure-report
 #### **Docker Execution**
 After running `docker-compose up`, access the following:
 
-| Service | URL | Description |
-|---------|-----|-------------|
-| **Allure UI** | http://localhost:5050 | Interactive dashboard with project overview |
-| **Allure API** | http://localhost:5051 | RESTful API for report data |
-| **Latest Report** | http://localhost:5051/allure-docker-service/projects/default/reports/latest/index.html | Direct link to the latest test execution report |
+| Service                | URL | Description                                          |
+|------------------------|-----|------------------------------------------------------|
+| **Allure UI**          | http://localhost:5050 | Interactive dashboard with project overview          |
+| **Allure API**         | http://localhost:5051 | RESTful API for report data                          |
+| **Latest Report**      | http://localhost:5051/allure-docker-service/projects/default/reports/latest/index.html | Direct link to the latest test execution report      |
+| **Latest live Report** | https://shlomi10.github.io/SunFlower/ | Direct link to the latest live test execution report |
 
 #### **Report Persistence**
 Reports are stored in the following volumes:
