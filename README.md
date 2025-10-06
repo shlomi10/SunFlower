@@ -1158,4 +1158,4 @@ We welcome contributions! Here's how you can help:
 ### **Community & Support**
 - [Playwright Discord](https://discord.com/invite/playwright)
 - [Stack Overflow - Playwright Tag](https://stackoverflow.com/questions/tagged/playwright)
-- [GitHub Issues](https://github.com/shlomi10/sunFlower/
+- [GitHub Issues](https://github.com/shlomi10/sunFlower/)
