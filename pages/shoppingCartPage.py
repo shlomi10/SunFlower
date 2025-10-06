@@ -5,6 +5,7 @@ from pages.basePage import BasePage
 This file contains the shopping cart
 """
 
+
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Shopping cart page")
 class ShoppingCartPage(BasePage):

@@ -5,6 +5,7 @@ from pages.basePage import BasePage
 This file contains the digital downloads page
 """
 
+
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Select random item")
 @allure.description("Select random item")

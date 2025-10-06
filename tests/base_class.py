@@ -16,6 +16,7 @@ load_dotenv(dotenv_path=dot_env_path)
 This file contains the base class
 """
 
+
 class BaseClass:
     def __init__(self, page):
         self.page = page

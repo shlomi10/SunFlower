@@ -1,4 +1,5 @@
 import os
+
 os.environ["DISPLAY"] = ":99"
 import allure
 import pytest
@@ -31,11 +32,21 @@ def initialize(request):
         # Capture screenshot if test fails
         if hasattr(request.node, "rep_call") and request.node.rep_call.failed:  # Checks if test failed
             screenshot_dir = "../screenshots"
-            os.makedirs(screenshot_dir, exist_ok=True) # Ensure directory exists
+            os.makedirs(screenshot_dir, exist_ok=True)  # Ensure directory exists
             screenshot_path = f"../screenshots/{request.node.name}.png"
             page.screenshot(path=screenshot_path, full_page=True)
             with open(screenshot_path, "rb") as image_file:
                 allure.attach(image_file.read(), name="screenshot", attachment_type=allure.attachment_type.PNG)
+
+        # ✅ Attach log file to Allure after each test
+        log_path = "../logs/test_execution.log"
+        if os.path.exists(log_path):
+            with open(log_path, "r", encoding="utf-8") as log_file:
+                allure.attach(
+                    log_file.read(),
+                    name="Execution Log",
+                    attachment_type=allure.attachment_type.TEXT
+                )
 
         context.tracing.stop(path="../trace/trace.zip")
         page.close()

@@ -1,5 +1,6 @@
 import logging
 import os
+import allure
 
 LOG_DIR = "../logs"
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -14,6 +15,24 @@ logging.basicConfig(
     ]
 )
 
+
+class AllureLoggerAdapter(logging.LoggerAdapter):
+    """Logger adapter that sends messages to both log file and Allure report."""
+
+    def process(self, msg, kwargs):
+        # Attach to Allure as text step
+        try:
+            allure.attach(
+                str(msg),
+                name="log",
+                attachment_type=allure.attachment_type.TEXT
+            )
+        except Exception:
+            pass
+        return msg, kwargs
+
+
 def get_logger(name: str) -> logging.Logger:
-    """Return a configured logger instance."""
-    return logging.getLogger(name)
+    """Return a logger instance that logs to file and Allure."""
+    base_logger = logging.getLogger(name)
+    return AllureLoggerAdapter(base_logger, {})

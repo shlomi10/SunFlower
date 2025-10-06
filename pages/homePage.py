@@ -8,6 +8,7 @@ from pages.basePage import BasePage
 This file contains the main page
 """
 
+
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("First article page")
 class Homepage(BasePage):

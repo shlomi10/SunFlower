@@ -6,6 +6,7 @@ from pages.basePage import BasePage
 This file contains the register page
 """
 
+
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("First article page")
 class RegisterPage(BasePage):
@@ -21,16 +22,16 @@ class RegisterPage(BasePage):
         self.logger.info("RegisterPage initialized with all registration form locators.")
 
     @allure.step("fill details")
-    def fill_details(self, firstName: str, lastName: str, email: str, password: str) -> None:
+    def fill_details(self, first_name: str, last_name: str, email: str, password: str) -> None:
         """Fill in user registration details."""
         self.logger.info("Waiting for 'Register' button to become visible before filling the form.")
         expect(self.__registerBTN).to_be_visible(timeout=5000)
 
-        self.logger.info(f"Typing first name: {firstName}")
-        self.type(self.__firstName_field, firstName)
+        self.logger.info(f"Typing first name: {first_name}")
+        self.type(self.__firstName_field, first_name)
 
-        self.logger.info(f"Typing last name: {lastName}")
-        self.type(self.__lastName_field, lastName)
+        self.logger.info(f"Typing last name: {last_name}")
+        self.type(self.__lastName_field, last_name)
 
         self.logger.info(f"Typing email: {email}")
         self.type(self.__emailField, email)
