@@ -20,9 +20,10 @@ class BaseClass:
     def __init__(self, page):
         self.page = page
         self.faker = faker.Faker()
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger(self.__class__.__name__)
         self.base_url = os.getenv("BASE_URL")
         self.register_page = RegisterPage(self.page)
         self.home_page = Homepage(self.page)
         self.digital_downloads_page = DigitalDownloadsPage(self.page)
         self.shopping_cart_page = ShoppingCartPage(self.page)
+        self.logger.info("Initialized BaseClass with all page objects.")

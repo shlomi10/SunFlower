@@ -446,6 +446,234 @@ Reports can be automatically published to:
 
 ---
 
+## 📋 Logging & Monitoring
+
+### **Comprehensive Logging System**
+The framework implements a robust logging system that captures detailed execution information for debugging, monitoring, and audit trails.
+
+### **Logger Configuration** (`utils/logger.py`)
+Centralized logging configuration with dual output:
+
+```python
+import logging
+import os
+
+LOG_DIR = "../logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, "test_execution.log")
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE, mode="a", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
+
+def get_logger(name: str) -> logging.Logger:
+    """Return a configured logger instance."""
+    return logging.getLogger(name)
+```
+
+### **Logger Features**
+- **Dual Output**: Logs written to both file (`logs/test_execution.log`) and console
+- **Timestamp Tracking**: Every log entry includes precise timestamp
+- **Log Levels**: INFO, DEBUG, WARNING, ERROR, CRITICAL
+- **Class-Based Naming**: Logger named after the class for easy identification
+- **UTF-8 Encoding**: Full Unicode support for international characters
+- **Append Mode**: Logs accumulate across test runs for historical analysis
+
+### **Log Format**
+```
+2025-10-06 14:32:15,123 | INFO | RegisterPage | RegisterPage initialized with all registration form locators.
+2025-10-06 14:32:15,456 | INFO | RegisterPage | Typing first name: John
+2025-10-06 14:32:15,789 | INFO | RegisterPage | Typing last name: Doe
+2025-10-06 14:32:16,012 | INFO | RegisterPage | Typing email: john.doe@example.com
+```
+
+### **Logging Integration in Page Objects**
+Every page object automatically includes a logger instance:
+
+```python
+class BasePage:
+    def __init__(self, page: Page):
+        self.page = page
+        self.logger = get_logger(self.__class__.__name__)
+
+    def click(self, element: Locator):
+        self.logger.info(f"Clicking element: {element}")
+        element.click()
+```
+
+### **Page-Specific Logging Examples**
+
+#### **HomePage** (`pages/homePage.py`)
+```python
+def select_register(self) -> None:
+    """Click on the 'Register' button."""
+    self.logger.info("Waiting for 'Register' button to be visible.")
+    expect(self.__register).to_be_visible(timeout=5000)
+    self.logger.info("Register button is visible. Clicking on it now.")
+    self.click(self.__register)
+    self.logger.info("Clicked on 'Register' successfully.")
+```
+
+#### **RegisterPage** (`pages/registerPage.py`)
+```python
+def fill_details(self, firstName: str, lastName: str, email: str, password: str) -> None:
+    """Fill in user registration details."""
+    self.logger.info("Waiting for 'Register' button to become visible before filling the form.")
+    self.logger.info(f"Typing first name: {firstName}")
+    self.type(self.__firstName_field, firstName)
+    self.logger.info(f"Typing last name: {lastName}")
+    self.type(self.__lastName_field, lastName)
+    self.logger.info(f"Typing email: {email}")
+    self.type(self.__emailField, email)
+    self.logger.info("Typing password and confirming it.")
+    self.type(self.__password, password)
+    self.type(self.__confirm_password, password)
+    self.logger.info("Finished filling in registration details successfully.")
+```
+
+#### **DigitalDownloadsPage** (`pages/digitalDownloadsPage.py`)
+```python
+def click_on_random_item(self) -> None:
+    """Click on a random product from the list."""
+    self.logger.info("Attempting to click on a random product from the digital downloads list.")
+    self.click_on_random_element(self.__product)
+    self.logger.info("Clicked on a random product successfully.")
+
+def wait_for_adding_the_product_to_the_shopping_cart(self) -> None:
+    """Wait for the spinner/loader to disappear after adding a product."""
+    self.logger.info("Waiting for loader to disappear after adding product to cart.")
+    self.wait_for_loader_to_disappear(self.__spinner)
+    self.logger.info("Loader disappeared — product successfully added to cart.")
+```
+
+### **Test-Level Logging**
+Tests also include logging for high-level flow tracking:
+
+```python
+def test_register_and_add_item_to_shopping_cart(self, initialize):
+    logger = initialize.logger
+    with allure.step("start first register and add to cart test"):
+        logger.info("Starting test: Register and add item to cart")
+        # ... test steps ...
+        logger.info(f"Generated user: {expected_email}")
+        logger.info("Filled registration form")
+        logger.info(f"Registered email visible in header: {actual_email}")
+        logger.info(f"Selected product: {title_of_random_item}")
+        logger.info(f"Product in cart: {actual_title_at_cart}")
+        logger.info("✅ Test passed successfully")
+```
+
+### **Log Levels Usage**
+
+| Level | Usage | Example |
+|-------|-------|---------|
+| **INFO** | Normal flow tracking | `logger.info("Clicking on 'Register' button")` |
+| **DEBUG** | Detailed debugging info | `logger.debug(f"Element locator: {locator}")` |
+| **WARNING** | Potential issues | `logger.warning("Element not found on first attempt, retrying...")` |
+| **ERROR** | Error conditions | `logger.error(f"Failed to click element: {error}")` |
+| **CRITICAL** | System failures | `logger.critical("Browser crashed unexpectedly")` |
+
+### **Accessing Logs**
+
+#### **Local Execution**
+```bash
+# View logs in real-time during test execution
+pytest --log-cli-level=INFO
+
+# View log file after execution
+cat logs/test_execution.log
+
+# Filter logs by level
+grep "ERROR" logs/test_execution.log
+
+# Follow logs in real-time
+tail -f logs/test_execution.log
+```
+
+#### **Docker Execution**
+```bash
+# View container logs (includes all output)
+docker-compose logs -f tests
+
+# Copy log file from container
+docker cp sunFlower-tests:/app/logs/test_execution.log ./local-logs/
+
+# Mount logs directory for direct access
+# (Already configured in docker-compose.yml)
+volumes:
+  - ./logs:/app/logs
+```
+
+### **Log Analysis & Troubleshooting**
+
+#### **Finding Failed Tests**
+```bash
+# Search for error patterns
+grep -i "error\|failed\|exception" logs/test_execution.log
+
+# View logs for specific test
+grep "test_register_and_add_item" logs/test_execution.log
+```
+
+#### **Performance Analysis**
+```bash
+# Extract timing information
+grep "Waiting for" logs/test_execution.log
+
+# Find slow operations
+grep -E "\d{4,}" logs/test_execution.log  # Operations taking >1 second
+```
+
+#### **Debug Flow Tracking**
+The logs provide a complete audit trail of test execution:
+```
+2025-10-06 14:32:15,123 | INFO | Homepage | Homepage initialized with locators
+2025-10-06 14:32:15,456 | INFO | Homepage | Waiting for 'Register' button to be visible
+2025-10-06 14:32:15,789 | INFO | Homepage | Clicked on 'Register' successfully
+2025-10-06 14:32:16,012 | INFO | RegisterPage | RegisterPage initialized
+2025-10-06 14:32:16,345 | INFO | RegisterPage | Typing first name: John
+```
+
+### **Log Retention & Maintenance**
+```bash
+# Rotate logs (manual)
+mv logs/test_execution.log logs/test_execution_$(date +%Y%m%d_%H%M%S).log
+
+# Archive old logs
+tar -czf logs_archive_$(date +%Y%m%d).tar.gz logs/*.log
+
+# Clean up old logs (keep last 30 days)
+find logs/ -name "*.log" -mtime +30 -delete
+```
+
+### **Integration with CI/CD**
+Logs are automatically captured and can be archived as artifacts:
+
+```yaml
+# GitHub Actions example
+- name: Upload logs
+  if: always()
+  uses: actions/upload-artifact@v3
+  with:
+    name: test-logs
+    path: logs/
+    retention-days: 30
+```
+
+### **Best Practices**
+- ✅ **Log at entry/exit** of significant methods
+- ✅ **Include context** in log messages (e.g., element names, data values)
+- ✅ **Use appropriate levels** (don't log everything as INFO)
+- ✅ **Avoid logging sensitive data** (passwords, tokens, PII)
+- ✅ **Keep messages concise** but informative
+- ✅ **Use consistent formatting** for easy parsing
+- ✅ **Review logs regularly** to identify patterns and issues
+
 ## 🔧 Configuration
 
 ### **Environment Variables** (`.env`)

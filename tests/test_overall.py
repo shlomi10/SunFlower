@@ -17,21 +17,30 @@ class TestOverall:
     @allure.title("validate basic functionality")
     @pytest.mark.flaky(reruns=1)
     def test_register_and_add_item_to_shopping_cart(self, initialize):
+        logger = initialize.logger
         with allure.step("start first register and add to cart test"):
+            logger.info("Starting test: Register and add item to cart")
             initialize.home_page.select_register()
             password = initialize.faker.password()
             expected_email = initialize.faker.email()
+            logger.info(f"Generated user: {expected_email}")
+
             initialize.register_page.fill_details(initialize.faker.first_name(), initialize.faker.last_name(),
                                                   expected_email, password)
+            logger.info("Filled registration form")
             initialize.register_page.click_on_register()
             initialize.register_page.click_on_continue()
             actual_email = initialize.home_page.get_registered_email()
+            logger.info(f"Registered email visible in header: {actual_email}")
             assert expected_email == actual_email, f'user was not registered and email is not correct at the header'
             initialize.home_page.click_on_digital_downloads()
             initialize.digital_downloads_page.click_on_random_item()
             title_of_random_item = initialize.digital_downloads_page.get_title_from_item()
+            logger.info(f"Selected product: {title_of_random_item}")
             initialize.digital_downloads_page.add_product_to_cart()
             initialize.digital_downloads_page.wait_for_adding_the_product_to_the_shopping_cart()
             initialize.digital_downloads_page.click_on_shopping_cart()
             actual_title_at_cart = initialize.shopping_cart_page.get_the_product_on_the_shopping_cart()
+            logger.info(f"Product in cart: {actual_title_at_cart}")
             assert actual_title_at_cart == title_of_random_item, f'product name is not the same, actual product name in cart is {actual_title_at_cart}'
+            logger.info("✅ Test passed successfully")
