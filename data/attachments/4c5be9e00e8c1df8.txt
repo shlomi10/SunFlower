@@ -1,0 +1,1 @@
+Register button is visible. Clicking on it now.

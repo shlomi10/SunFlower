@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"validate if register and add item to shopping cart is working","6344","validate basic functionality","tests","Mon Oct 06 12:24:43 UTC 2025","passed","Mon Oct 06 12:24:50 UTC 2025","TestOverall","test_overall","",""

@@ -1,0 +1,1 @@
+Clicking random element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/digital-downloads'> selector='.product-title >> nth=2'>

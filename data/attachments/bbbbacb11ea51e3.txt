@@ -1,0 +1,1 @@
+ShoppingCartPage initialized with locator for product list in cart.

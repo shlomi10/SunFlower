@@ -1,0 +1,1 @@
+'Continue' button clicked successfully, moving forward.
