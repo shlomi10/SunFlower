@@ -1,1 +1,0 @@
-'Add to Cart' button clicked successfully.

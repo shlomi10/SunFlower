@@ -1,1 +1,0 @@
-Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#register-button'>

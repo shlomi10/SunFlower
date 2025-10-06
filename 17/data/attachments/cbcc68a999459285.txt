@@ -1,1 +1,0 @@
-Waiting for registered email element to be visible in header.

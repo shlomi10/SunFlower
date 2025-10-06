@@ -1,0 +1,1 @@
+Waiting for loader <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/album-3'> selector='.loading-image'> to disappear (timeout=10000)

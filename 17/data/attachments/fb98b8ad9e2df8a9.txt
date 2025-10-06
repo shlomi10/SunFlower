@@ -1,1 +1,0 @@
-Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/'> selector=".top-menu a[href='/digital-downloads']">

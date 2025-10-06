@@ -1,1 +1,0 @@
-Typing text '&aBIv9QllN' into element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#Password'>

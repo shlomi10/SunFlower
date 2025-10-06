@@ -1,0 +1,1 @@
+Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/album-3'> selector='.add-to-cart-button'>

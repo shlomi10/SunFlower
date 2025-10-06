@@ -1,1 +1,0 @@
-Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/music-2'> selector='.header-links .ico-cart'>
