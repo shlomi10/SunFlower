@@ -30,7 +30,7 @@ jobs:
         run: |
           docker run --rm \
             -v ${{ github.workspace }}/allure-results:/app/allure-results \
-            shlomi10/sunflower:001 \
+            shlomi10/sunflower:003 \
             sh -c "Xvfb :99 -screen 0 1920x1080x24 & export DISPLAY=:99 && pytest --alluredir=/app/allure-results"
 
       - name: 📥 Checkout gh-pages branch into ./history
