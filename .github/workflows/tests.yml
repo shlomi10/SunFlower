@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 🐳 Pull Docker image
-        run: docker pull shlomi10/sunflower:001
+        run: docker pull shlomi10/sunflower:002
 
       - name: 🗂️ Create Allure results folder
         run: mkdir -p ./allure-results
