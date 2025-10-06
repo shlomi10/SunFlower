@@ -24,6 +24,7 @@ A modern, scalable automation testing framework built with **Playwright** and **
 - [Tech Stack](#️-tech-stack)
 - [Test Execution](#-test-execution-options)
 - [Live Reporting](#-test-reporting--live-dashboard)
+- [Logging & Monitoring](#-logging--monitoring)
 - [Configuration](#-configuration)
 - [Docker Hub](#-docker-hub-image)
 - [CI/CD Integration](#️-cicd-integration)
