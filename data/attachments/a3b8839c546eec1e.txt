@@ -1,1 +1,0 @@
-Typing text 'brandinorris@example.net' into element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#Email'>

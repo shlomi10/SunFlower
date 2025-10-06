@@ -1,0 +1,1 @@
+Waiting for 'Register' button to become visible before filling the form.

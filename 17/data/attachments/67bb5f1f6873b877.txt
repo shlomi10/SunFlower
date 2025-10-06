@@ -1,0 +1,1 @@
+RegisterPage initialized with all registration form locators.

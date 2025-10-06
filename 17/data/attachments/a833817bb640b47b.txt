@@ -1,0 +1,1 @@
+Fetching product title from product page.

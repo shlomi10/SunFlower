@@ -1,0 +1,60 @@
+2025-10-06 12:31:20,417 | INFO | RegisterPage | RegisterPage initialized with all registration form locators.
+2025-10-06 12:31:20,417 | INFO | Homepage | Homepage initialized with locators for Register, Email Header, and Digital Downloads.
+2025-10-06 12:31:20,418 | INFO | DigitalDownloadsPage | DigitalDownloadsPage initialized with all locators.
+2025-10-06 12:31:20,418 | INFO | ShoppingCartPage | ShoppingCartPage initialized with locator for product list in cart.
+2025-10-06 12:31:20,418 | INFO | BaseClass | Initialized BaseClass with all page objects.
+2025-10-06 12:31:22,800 | INFO | BaseClass | Starting test: Register and add item to cart
+2025-10-06 12:31:22,800 | INFO | Homepage | Waiting for 'Register' button to be visible.
+2025-10-06 12:31:22,853 | INFO | Homepage | Register button is visible. Clicking on it now.
+2025-10-06 12:31:22,853 | INFO | Homepage | Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/'> selector='.ico-register'>
+2025-10-06 12:31:23,308 | INFO | Homepage | Clicked on 'Register' successfully.
+2025-10-06 12:31:23,309 | INFO | BaseClass | Generated user: josephmatthew@example.org
+2025-10-06 12:31:23,309 | INFO | RegisterPage | Waiting for 'Register' button to become visible before filling the form.
+2025-10-06 12:31:23,348 | INFO | RegisterPage | Typing first name: Aimee
+2025-10-06 12:31:23,348 | INFO | RegisterPage | Typing text 'Aimee' into element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#FirstName'>
+2025-10-06 12:31:23,374 | INFO | RegisterPage | Typing last name: Rodgers
+2025-10-06 12:31:23,374 | INFO | RegisterPage | Typing text 'Rodgers' into element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#LastName'>
+2025-10-06 12:31:23,404 | INFO | RegisterPage | Typing email: josephmatthew@example.org
+2025-10-06 12:31:23,405 | INFO | RegisterPage | Typing text 'josephmatthew@example.org' into element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#Email'>
+2025-10-06 12:31:23,453 | INFO | RegisterPage | Typing password and confirming it.
+2025-10-06 12:31:23,453 | INFO | RegisterPage | Typing text '&aBIv9QllN' into element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#Password'>
+2025-10-06 12:31:23,497 | INFO | RegisterPage | Typing text '&aBIv9QllN' into element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#ConfirmPassword'>
+2025-10-06 12:31:23,528 | INFO | RegisterPage | Finished filling in registration details successfully.
+2025-10-06 12:31:23,528 | INFO | BaseClass | Filled registration form
+2025-10-06 12:31:23,528 | INFO | RegisterPage | Waiting for 'Register' button to be visible before clicking.
+2025-10-06 12:31:23,539 | INFO | RegisterPage | Clicking on 'Register' button.
+2025-10-06 12:31:23,540 | INFO | RegisterPage | Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/register'> selector='#register-button'>
+2025-10-06 12:31:24,564 | INFO | RegisterPage | 'Register' button clicked successfully.
+2025-10-06 12:31:24,564 | INFO | RegisterPage | Waiting for 'Continue' button to appear after registration.
+2025-10-06 12:31:24,610 | INFO | RegisterPage | Clicking on 'Continue' button to proceed.
+2025-10-06 12:31:24,610 | INFO | RegisterPage | Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/registerresult/1'> selector='.register-continue-button'>
+2025-10-06 12:31:25,093 | INFO | RegisterPage | 'Continue' button clicked successfully, moving forward.
+2025-10-06 12:31:25,094 | INFO | Homepage | Waiting for registered email element to be visible in header.
+2025-10-06 12:31:25,152 | INFO | Homepage | Extracted text: josephmatthew@example.org
+2025-10-06 12:31:25,152 | INFO | Homepage | Extracted registered email from header: josephmatthew@example.org
+2025-10-06 12:31:25,152 | INFO | BaseClass | Registered email visible in header: josephmatthew@example.org
+2025-10-06 12:31:25,153 | INFO | Homepage | Waiting for 'Digital Downloads' link to be visible.
+2025-10-06 12:31:25,168 | INFO | Homepage | 'Digital Downloads' link is visible. Clicking on it.
+2025-10-06 12:31:25,169 | INFO | Homepage | Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/'> selector=".top-menu a[href='/digital-downloads']">
+2025-10-06 12:31:25,696 | INFO | Homepage | Clicked on 'Digital Downloads' link successfully.
+2025-10-06 12:31:25,697 | INFO | DigitalDownloadsPage | Attempting to click on a random product from the digital downloads list.
+2025-10-06 12:31:25,722 | INFO | DigitalDownloadsPage | Clicking random element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/digital-downloads'> selector='.product-title >> nth=2'>
+2025-10-06 12:31:26,705 | INFO | DigitalDownloadsPage | Clicked on a random product successfully.
+2025-10-06 12:31:26,705 | INFO | DigitalDownloadsPage | Fetching product title from product page.
+2025-10-06 12:31:26,903 | INFO | DigitalDownloadsPage | Extracted text: Music 2
+2025-10-06 12:31:26,904 | INFO | DigitalDownloadsPage | Extracted product title: Music 2
+2025-10-06 12:31:26,904 | INFO | BaseClass | Selected product: Music 2
+2025-10-06 12:31:26,904 | INFO | DigitalDownloadsPage | Clicking on 'Add to Cart' button.
+2025-10-06 12:31:26,904 | INFO | DigitalDownloadsPage | Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/music-2'> selector='.add-to-cart-button'>
+2025-10-06 12:31:26,957 | INFO | DigitalDownloadsPage | 'Add to Cart' button clicked successfully.
+2025-10-06 12:31:26,957 | INFO | DigitalDownloadsPage | Waiting for loader to disappear after adding product to cart.
+2025-10-06 12:31:26,957 | INFO | DigitalDownloadsPage | Waiting for loader <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/music-2'> selector='.loading-image'> to disappear (timeout=10000)
+2025-10-06 12:31:28,258 | INFO | DigitalDownloadsPage | Loader disappeared — product successfully added to cart.
+2025-10-06 12:31:28,258 | INFO | DigitalDownloadsPage | Clicking on shopping cart icon.
+2025-10-06 12:31:28,258 | INFO | DigitalDownloadsPage | Clicking element: <Locator frame=<Frame name= url='https://demowebshop.tricentis.com/music-2'> selector='.header-links .ico-cart'>
+2025-10-06 12:31:28,737 | INFO | DigitalDownloadsPage | Navigated to the shopping cart page.
+2025-10-06 12:31:28,738 | INFO | ShoppingCartPage | Fetching product name from the shopping cart.
+2025-10-06 12:31:28,765 | INFO | ShoppingCartPage | Extracted text: Music 2
+2025-10-06 12:31:28,765 | INFO | ShoppingCartPage | Extracted product name from cart: Music 2
+2025-10-06 12:31:28,765 | INFO | BaseClass | Product in cart: Music 2
+2025-10-06 12:31:28,765 | INFO | BaseClass | ✅ Test passed successfully
